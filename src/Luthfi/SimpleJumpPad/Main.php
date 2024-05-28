@@ -8,8 +8,8 @@ use pocketmine\plugin\PluginBase;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerMoveEvent;
 use pocketmine\math\Vector3;
+use pocketmine\block\BlockTypeIds;
 use pocketmine\utils\Config;
-use pocketmine\block\BlockLegacyIds;
 
 class Main extends PluginBase implements Listener {
 
@@ -27,9 +27,9 @@ class Main extends PluginBase implements Listener {
 
     public function onPlayerMove(PlayerMoveEvent $event): void {
         $player = $event->getPlayer();
-        $block = $player->getPosition()->getWorld()->getBlock($player->getPosition()->subtract(0, 1, 0));
+        $block = $player->getWorld()->getBlock($player->getPosition()->subtract(0, 1, 0));
         
-        if ($block->getId() === BlockLegacyIds::LIGHT_WEIGHTED_PRESSURE_PLATE) {
+        if ($block->getTypeId() === BlockTypeIds::LIGHT_WEIGHTED_PRESSURE_PLATE) {
             $player->setMotion(new Vector3(0, $this->jumpPower, 0));
         }
     }
