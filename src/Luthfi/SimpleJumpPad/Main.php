@@ -29,7 +29,7 @@ class Main extends PluginBase implements Listener {
         $player = $event->getPlayer();
         $block = $player->getWorld()->getBlock($player->getPosition()->floor()->down());
         
-        if ($block->getTypeId() === VanillaBlocks::WeightedPressurePlateLight()->getTypeId()) {
+        if ($block->getTypeId() === VanillaBlocks::LIGHT_WEIGHTED_PRESSURE_PLATE()->getTypeId()) {
             $player->setMotion(new Vector3(0, $this->jumpPower, 0));
         }
     }
